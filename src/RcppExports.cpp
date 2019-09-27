@@ -7,14 +7,20 @@
 using namespace Rcpp;
 
 
+RcppExport SEXP _rcpp_module_boot_stan_fit4norm_mod();
 RcppExport SEXP _rcpp_module_boot_stan_fit4sas_mod();
+RcppExport SEXP _rcpp_module_boot_stan_fit4sn_mod();
+RcppExport SEXP _rcpp_module_boot_stan_fit4t_mod();
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_rcpp_module_boot_stan_fit4norm_mod", (DL_FUNC) &_rcpp_module_boot_stan_fit4norm_mod, 0},
     {"_rcpp_module_boot_stan_fit4sas_mod", (DL_FUNC) &_rcpp_module_boot_stan_fit4sas_mod, 0},
+    {"_rcpp_module_boot_stan_fit4sn_mod", (DL_FUNC) &_rcpp_module_boot_stan_fit4sn_mod, 0},
+    {"_rcpp_module_boot_stan_fit4t_mod", (DL_FUNC) &_rcpp_module_boot_stan_fit4t_mod, 0},
     {NULL, NULL, 0}
 };
 
-RcppExport void R_init_rstansas(DllInfo *dll) {
+RcppExport void R_init_flexmeta(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }

@@ -3,5 +3,6 @@
 export(sas_stan)
 import(Rcpp)
 import(methods)
+import(rstantools)
 importFrom(rstan,sampling)
-useDynLib(rstansas, .registration = TRUE)
+useDynLib(flexmeta, .registration = TRUE)
