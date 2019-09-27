@@ -1,13 +1,16 @@
-Package: bpimeta
+Package: flexmeta
 Type: Package
-Title: Bayesian Prediction Intervals for Random-Effects Meta-Analysis
-Version: 0.0.1
+Title: Meta-Analysis Using Flexible Random-Effects Distributions
+Version: 1.0.0
 Authors@R: c(
+  person("Hisashi", "Noma", 
+         role = c("aut"), comment = c(ORCID = "0000-0002-2520-9949")),
   person("Kengo", "Nagashima", email = "nshi1201@gmail.com",
          role = c("aut", "cre"), comment = c(ORCID = "0000-0003-4529-9045")),
-  person("Hisashi", "Noma", role = c("aut")))
-Description: An implementation of bayesian prediction intervals for
-  random-effects meta-analysis based on rstan package.
+  )
+Description: A R package for implementing meta-analysis using flexible
+  random-effects distribution models (e.g., skew t-distribution,
+  sinh-arcsinh distribution).
 Depends: R (>= 3.4.0)
 Imports:
   methods,
