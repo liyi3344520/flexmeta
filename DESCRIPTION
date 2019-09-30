@@ -13,6 +13,7 @@ Description: A R package for implementing meta-analysis using flexible
   sinh-arcsinh distribution).
 Depends: R (>= 3.4.0)
 Imports:
+  stats,
   methods,
   Rcpp (>= 1.0.2),
   rstan (>= 2.18.1),

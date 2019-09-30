@@ -29,15 +29,25 @@
 #' }
 #' sas_stan(data = dat2, init = init1)
 #' @export
-sas_stan <- function(data, par = NA, chains = 1, iter = 3500, warmup = 500, thin = 1, init = 'random') {
+mu_f <- function(fit, plot=TRUE){
 
-  if (is.na(par)) {
-    par <- c("mu", "sigma", "epsilon", "delta", "theta_new", "x_post_mean", "x_post_var")
+  e1 <- extract(fit)
+  mu <- e1$mu
+
+  X1 <- mean(mu)
+  X2 <- sd(mu)
+  X3 <- quantile(mu,c(.025,.975))
+  X4 <- mean(mu < 0)
+  X5 <- quantile(mu,c(.25,.50,.75))
+  X6 <- skewness(mu)
+  X7 <- kurtosis(mu)
+
+  if(plot==TRUE){
+    hist(mu,xlab="mu",freq=FALSE,br=100,main="Posterior Distribution of mu")
+    ds <- density(mu)
+    lines(ds$x,ds$y,col=4,lwd=2)
   }
 
-  return(
-    rstan::sampling(stanmodels$sas, data = data, par = par, chains = chains,
-                    iter = iter, warmup = warmup, thin = thin, init = init)
-  )
+  return(list(mean=X1,sd=X2,"95%CrI"=X3,"Pr(mu<0)"=X4,quartiles=X5,skewness=X6,kurtosis=X7))
 
 }
