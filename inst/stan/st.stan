@@ -4,6 +4,9 @@ functions {
     return log(2) - log(omega) + student_t_lpdf( (y - xi)/omega | nu, 0, 1) +
       student_t_lcdf(alpha*(y-xi)*sqrt((nu+1)/(nu+(y-xi)*(y-xi)/(omega*omega)))/omega | (nu+1), 0, 1);
   }
+  real skew_t_rng(real xi, real omega, real nu, real alpha) {
+    return 1;
+  }
 }
 data{
   int<lower=0> K;
@@ -13,10 +16,9 @@ data{
 parameters {
   real xi;
   real<lower=0> omega;
-real alpha;
- real<lower=2.5, upper=1000> nu;
+  real alpha;
+  real<lower=2.5, upper=1000> nu;
   real theta[K];
-  real theta_new;
 }
 transformed parameters {
   real mu;
@@ -33,11 +35,10 @@ model{
   omega ~ uniform(0, 20);
   alpha ~ normal(0, 5);
   nu ~ exponential(0.10);
-  theta_new ~ skew_t(xi, omega, nu, alpha);
 }
 generated quantities{
   vector[K] log_lik;
   real theta_new;
   for (i in 1:K) log_lik[i] = normal_lpdf(yi[i] | theta[i], si[i]);
-  theta_new = student_t_rng(nu, xi, omega);
+  theta_new = skew_t_rng(xi, omega, nu, alpha);
 }

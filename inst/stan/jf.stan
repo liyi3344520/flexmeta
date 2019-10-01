@@ -8,6 +8,9 @@ functions {
       (a + 0.5)*log(1 + (y - xi)/(omega*sqrt(a + b + (y - xi)*(y - xi)/(omega*omega)))) +
       (b + 0.5)*log(1 - (y - xi)/(omega*sqrt(a + b + (y - xi)*(y - xi)/(omega*omega))));
   }
+  real jf_rng(real xi, real omega, real a, real b) {
+    return 1;
+  }
 }
 data{
   int<lower=0> K;
@@ -20,7 +23,6 @@ parameters {
   real<lower=1.5> a;
   real<lower=1.5> b;
   real theta[K];
-  real theta_new;
 }
 transformed parameters {
   real mu;
@@ -43,5 +45,5 @@ generated quantities{
   vector[K] log_lik;
   real theta_new;
   for (i in 1:K) log_lik[i] = normal_lpdf(yi[i] | theta[i], si[i]);
-  theta_new = jf(xi, omega, a, b);
+  theta_new = jf_rng(xi, omega, a, b);
 }

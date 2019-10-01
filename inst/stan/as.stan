@@ -9,6 +9,9 @@ functions {
       (fabs((y - xi)/omega) )^nu / nu +
       normal_lcdf( signnum(alpha*(y-xi)/omega) * fabs( alpha*(y-xi)/omega )^(nu/2) / sqrt(nu/2)  | 0, 1);
   }
+  real as_rng(real xi, real omega, real nu, real alpha) {
+    return 1;
+  }
 }
 data{
   int<lower=0> K;
@@ -21,7 +24,6 @@ parameters {
   real alpha;
   real<lower=.5, upper=100> nu;
   real theta[K];
-  real theta_new;
 }
 transformed parameters {
   real mu;
@@ -44,5 +46,5 @@ generated quantities{
   vector[K] log_lik;
   real theta_new;
   for (i in 1:K) log_lik[i] = normal_lpdf(yi[i] | theta[i], si[i]);
-  theta_new = as(xi, omega, nu, alpha);
+  theta_new = as_rng(xi, omega, nu, alpha);
 }
