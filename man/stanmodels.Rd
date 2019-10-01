@@ -76,8 +76,15 @@ distributions, \eqn{F}, as follows:
   where \eqn{\xi} is location (mean), \eqn{\omega} is scale parameter (SD),
   \eqn{\delta} is kurtosis parameter and \eqn{\epsilon} is skewness parameter.
 }
+The \code{data} should be a list of study data:
+\itemize{
+\item \code{K}: A numeric value of the number of studies.
+\item \code{y}: A numeric vector of the effect size estimates.
+\item \code{se}: A numeric vector of the within studies standard error estimates.
+}
 }
 \examples{
+\donttest{
 require("flexmeta")
 require("rstan")
 options(mc.cores = parallel::detectCores())
@@ -175,6 +182,7 @@ dic(fit4, dat)
 dic(fit5, dat)
 dic(fit6, dat)
 dic(fit7, dat)
+}
 }
 \seealso{
 \code{\link[rstan]{sampling}}, \code{\link[rstan]{stanmodel-class}},

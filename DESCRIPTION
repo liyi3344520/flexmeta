@@ -11,7 +11,7 @@ Authors@R: c(
 Description: An R package for implementing meta-analysis using flexible
   random-effects distribution models (e.g., skew t-distribution,
   sinh-arcsinh distribution).
-Depends: R (>= 3.4.0)
+Depends: R (>= 3.5.0)
 Imports:
   parallel,
   stats,

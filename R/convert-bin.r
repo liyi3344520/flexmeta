@@ -22,10 +22,10 @@
 #' \item \code{RD}:    risk difference,
 #'                     which is defined by \eqn{=\frac{m1}{n1}-\frac{m2}{n2}}.
 #' }
-#' @return
+#' @return A \code{data.frame} of study data.
 #' \itemize{
-#' \item \code{y}: A vector of the effect size estimates.
-#' \item \code{se}: A vector of the within studies standard errors.
+#' \item \code{y}: A numeric vector of the effect size estimates.
+#' \item \code{se}: A numeric vector of the within studies standard errors.
 #' }
 #' @references
 #' Hartung, J., and Knapp, G. (2001).

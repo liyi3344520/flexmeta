@@ -27,7 +27,29 @@ The `flexmeta` package supports seven compled `stanmodel` objects of random effe
 * `sm_jf`: A `stanmodel` object for an Jones-Faddy random effects distribution, $F \sim JF(\mu, \omega, a, b)$, where $\xi$ is location (mean), $\omega$ is scale parameter (SD), and $a$ and $b$ are distribution parameters regulate the skewness and kurtosis.
 * `sm_sas`: A `stanmodel` object for an Sinh-arcsinh random effects distribution, $F \sim SAS(\mu, \omega, \delta, \epsilon)$, where $\xi$ is location (mean), $\omega$ is scale parameter (SD), $\delta$ is kurtosis parameter and $\epsilon$ is skewness parameter.
 
+The `data` should be a list of study data:
+
+* `K`: A numeric value of the number of studies.
+* `y`: A numeric vector of the effect size estimates.
+* `se`: A numeric vector of the within studies standard error estimates.
+
 Here are examples of the `flexmeta` package:
+```{r, echo = TRUE, fig.width = 6, fig.height = 6}
+require("flexmeta")
+require("rstan")
+options(mc.cores = parallel::detectCores())
+
+data("clbp")
+dat <- convert_mean(clbp$n1, clbp$m1, clbp$s1, clbp$n2, clbp$m2, clbp$s2)
+dat <- list(K = length(dat$y), y = dat$y, se = dat$se)
+
+fit <- sampling(sm_sn, data = dat,
+  chains = 1, warmup = 5000, iter = 30000, seed = 2645751)
+pred_f(fit)
+mu_f(fit)
+dic(fit, dat)
+```
+
 ```{r, eval = FALSE}
 require("flexmeta")
 require("rstan")
@@ -102,22 +124,6 @@ hist(e7$theta_new, br = 300, xlim = c(-40, 30), ylim = c(0, .1),
   xlab = "Mean difference", border = "gray")
 ds <- density(e7$theta_new)
 lines(ds$x, ds$y, col = 4, lwd = 2)
-
-pred_f(fit1)
-pred_f(fit2)
-pred_f(fit3)
-pred_f(fit4)
-pred_f(fit5)
-pred_f(fit6)
-pred_f(fit7)
-
-mu_f(fit1)
-mu_f(fit2)
-mu_f(fit3)
-mu_f(fit4)
-mu_f(fit5)
-mu_f(fit6)
-mu_f(fit7)
 
 dic(fit1, dat)
 dic(fit2, dat)

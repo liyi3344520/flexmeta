@@ -23,10 +23,10 @@ convert_mean(n1, m1, s1, n2, m2, s2, pooled = FALSE)
 The default is \code{FALSE}.}
 }
 \value{
-A list of study data.
+A \code{data.frame} of study data.
 \itemize{
-\item \code{y}: A vector of the effect size estimates.
-\item \code{se}: A vector of the within studies standard error estimates.
+\item \code{y}: A numeric vector of the effect size estimates.
+\item \code{se}: A numeric vector of the within studies standard error estimates.
 }
 }
 \description{

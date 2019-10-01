@@ -14,10 +14,10 @@
 #' @param s2 A vector of standard deviation in experimental group
 #' @param pooled logical; if \code{TRUE}, a pooled variance is used.
 #'   The default is \code{FALSE}.
-#' @return A list of study data.
+#' @return A \code{data.frame} of study data.
 #' \itemize{
-#' \item \code{y}: A vector of the effect size estimates.
-#' \item \code{se}: A vector of the within studies standard error estimates.
+#' \item \code{y}: A numeric vector of the effect size estimates.
+#' \item \code{se}: A numeric vector of the within studies standard error estimates.
 #' }
 #' @examples
 #' require("flexmeta")
