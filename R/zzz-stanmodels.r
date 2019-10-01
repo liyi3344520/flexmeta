@@ -58,6 +58,7 @@
 #' data("clbp")
 #' dat <- convert_mean(clbp$n1, clbp$m1, clbp$s1, clbp$n2, clbp$m2, clbp$s2)
 #' dat <- list(K = length(dat$y), y = dat$y, se = dat$se)
+#'
 #' fit1 <- sampling(sm_norm, data = dat,
 #'   chains = 1, warmup = 5000, iter = 30000, seed = 2645751)
 #' fit2 <- sampling(sm_t, data = dat,

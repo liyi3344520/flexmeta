@@ -8,7 +8,7 @@
 #' @name flexmeta-package
 #' @aliases flexmeta
 #' @useDynLib flexmeta, .registration = TRUE
-#' @import methods rstantools Rcpp
+#' @import rstantools Rcpp
 #' @importFrom rstan sampling
 #'
 #' @references
