@@ -11,8 +11,8 @@
 \alias{sm_as}
 \alias{sm_jf}
 \alias{sm_sas}
-\title{Compiled \code{stanmodel} objects}
-\format{An object of class \code{stanmodel}}
+\title{Compiled \code{stanmodel} objects of flexible random effects distribution models}
+\format{An object of class \code{stanmodel}.}
 \usage{
 sm_norm
 
@@ -29,10 +29,10 @@ sm_jf
 sm_sas
 }
 \description{
-Compiled \code{stanmodel} objects
+Compiled \code{stanmodel} objects of flexible random effects distribution models
 }
 \details{
-Compiled \code{stanmodel} objects of the flexible random
+Compiled \code{stanmodel} objects of flexible random
 effects distribution models that are defined as
 \deqn{Y_i \sim N(\theta_i, \sigma_i^2)}
 \deqn{\theta_i \sim F}
@@ -176,7 +176,7 @@ dic(fit6, dat)
 dic(fit7, dat)
 }
 \seealso{
-\code{\link[rstan]{sampling}}, \code{\link[rstan]{stanfit}},
-  \code{\link[rstan]{stan}}.
+\code{\link[rstan]{sampling}}, \code{\link[rstan]{stanmodel-class}},
+  \code{\link[rstan]{stanfit-class}}, \code{\link[rstan]{stan}}.
 }
 \keyword{datasets}

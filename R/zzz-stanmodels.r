@@ -1,6 +1,6 @@
-#' Compiled \code{stanmodel} objects
+#' Compiled \code{stanmodel} objects of flexible random effects distribution models
 #'
-#' @details Compiled \code{stanmodel} objects of the flexible random
+#' @details Compiled \code{stanmodel} objects of flexible random
 #' effects distribution models that are defined as
 #' \deqn{Y_i \sim N(\theta_i, \sigma_i^2)}
 #' \deqn{\theta_i \sim F}
@@ -45,11 +45,11 @@
 #'   \eqn{\delta} is kurtosis parameter and \eqn{\epsilon} is skewness parameter.
 #' }
 #'
-#' @format An object of class \code{stanmodel}
+#' @format An object of class \code{stanmodel}.
 #' @rdname stanmodels
 #' @aliases stanmodels sm
-#' @seealso \code{\link[rstan]{sampling}}, \code{\link[rstan]{stanfit}},
-#'   \code{\link[rstan]{stan}}.
+#' @seealso \code{\link[rstan]{sampling}}, \code{\link[rstan]{stanmodel-class}},
+#'   \code{\link[rstan]{stanfit-class}}, \code{\link[rstan]{stan}}.
 #' @examples
 #' require("flexmeta")
 #' require("rstan")
