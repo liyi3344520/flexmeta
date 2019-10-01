@@ -12,6 +12,7 @@
 #' }
 #' @return
 #' A numeric value of \eqn{DIC}.
+#' @seealso stanmodels
 #' @importFrom stats dnorm
 #' @importFrom rstan extract
 #' @examples

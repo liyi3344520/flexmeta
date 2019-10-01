@@ -33,15 +33,15 @@ static int current_statement_begin__;
 stan::io::program_reader prog_reader__() {
     stan::io::program_reader reader;
     reader.add_event(0, 0, "start", "model_norm");
-    reader.add_event(33, 31, "end", "model_norm");
+    reader.add_event(31, 29, "end", "model_norm");
     return reader;
 }
 #include <stan_meta_header.hpp>
 class model_norm : public prob_grad {
 private:
         int K;
-        std::vector<double> yi;
-        std::vector<double> si;
+        std::vector<double> y;
+        std::vector<double> se;
 public:
     model_norm(stan::io::var_context& context__,
         std::ostream* pstream__ = 0)
@@ -80,28 +80,28 @@ public:
             K = vals_i__[pos__++];
             check_greater_or_equal(function__, "K", K, 0);
             current_statement_begin__ = 4;
-            validate_non_negative_index("yi", "K", K);
-            context__.validate_dims("data initialization", "yi", "double", context__.to_vec(K));
-            yi = std::vector<double>(K, double(0));
-            vals_r__ = context__.vals_r("yi");
+            validate_non_negative_index("y", "K", K);
+            context__.validate_dims("data initialization", "y", "double", context__.to_vec(K));
+            y = std::vector<double>(K, double(0));
+            vals_r__ = context__.vals_r("y");
             pos__ = 0;
-            size_t yi_k_0_max__ = K;
-            for (size_t k_0__ = 0; k_0__ < yi_k_0_max__; ++k_0__) {
-                yi[k_0__] = vals_r__[pos__++];
+            size_t y_k_0_max__ = K;
+            for (size_t k_0__ = 0; k_0__ < y_k_0_max__; ++k_0__) {
+                y[k_0__] = vals_r__[pos__++];
             }
             current_statement_begin__ = 5;
-            validate_non_negative_index("si", "K", K);
-            context__.validate_dims("data initialization", "si", "double", context__.to_vec(K));
-            si = std::vector<double>(K, double(0));
-            vals_r__ = context__.vals_r("si");
+            validate_non_negative_index("se", "K", K);
+            context__.validate_dims("data initialization", "se", "double", context__.to_vec(K));
+            se = std::vector<double>(K, double(0));
+            vals_r__ = context__.vals_r("se");
             pos__ = 0;
-            size_t si_k_0_max__ = K;
-            for (size_t k_0__ = 0; k_0__ < si_k_0_max__; ++k_0__) {
-                si[k_0__] = vals_r__[pos__++];
+            size_t se_k_0_max__ = K;
+            for (size_t k_0__ = 0; k_0__ < se_k_0_max__; ++k_0__) {
+                se[k_0__] = vals_r__[pos__++];
             }
-            size_t si_i_0_max__ = K;
-            for (size_t i_0__ = 0; i_0__ < si_i_0_max__; ++i_0__) {
-                check_greater_or_equal(function__, "si[i_0__]", si[i_0__], 0);
+            size_t se_i_0_max__ = K;
+            for (size_t i_0__ = 0; i_0__ < se_i_0_max__; ++i_0__) {
+                check_greater_or_equal(function__, "se[i_0__]", se[i_0__], 0);
             }
             // initialize transformed data variables
             // execute transformed data statements
@@ -234,16 +234,9 @@ public:
             (void) mu;  // dummy to suppress unused var warning
             stan::math::initialize(mu, DUMMY_VAR__);
             stan::math::fill(mu, DUMMY_VAR__);
-            current_statement_begin__ = 14;
-            local_scalar_t__ V;
-            (void) V;  // dummy to suppress unused var warning
-            stan::math::initialize(V, DUMMY_VAR__);
-            stan::math::fill(V, DUMMY_VAR__);
             // transformed parameters block statements
-            current_statement_begin__ = 15;
+            current_statement_begin__ = 14;
             stan::math::assign(mu, xi);
-            current_statement_begin__ = 16;
-            stan::math::assign(V, (omega * omega));
             // validate transformed parameters
             const char* function__ = "validate transformed params";
             (void) function__;  // dummy to suppress unused var warning
@@ -253,24 +246,17 @@ public:
                 msg__ << "Undefined transformed parameter: mu";
                 stan::lang::rethrow_located(std::runtime_error(std::string("Error initializing variable mu: ") + msg__.str()), current_statement_begin__, prog_reader__());
             }
-            current_statement_begin__ = 14;
-            if (stan::math::is_uninitialized(V)) {
-                std::stringstream msg__;
-                msg__ << "Undefined transformed parameter: V";
-                stan::lang::rethrow_located(std::runtime_error(std::string("Error initializing variable V: ") + msg__.str()), current_statement_begin__, prog_reader__());
-            }
-            check_greater_or_equal(function__, "V", V, 0);
             // model body
-            current_statement_begin__ = 19;
+            current_statement_begin__ = 17;
             for (int i = 1; i <= K; ++i) {
-                current_statement_begin__ = 20;
-                lp_accum__.add(normal_log<propto__>(get_base1(yi, i, "yi", 1), get_base1(theta, i, "theta", 1), get_base1(si, i, "si", 1)));
-                current_statement_begin__ = 21;
+                current_statement_begin__ = 18;
+                lp_accum__.add(normal_log<propto__>(get_base1(y, i, "y", 1), get_base1(theta, i, "theta", 1), get_base1(se, i, "se", 1)));
+                current_statement_begin__ = 19;
                 lp_accum__.add(normal_log<propto__>(get_base1(theta, i, "theta", 1), xi, omega));
             }
-            current_statement_begin__ = 23;
+            current_statement_begin__ = 21;
             lp_accum__.add(normal_log<propto__>(xi, 0, 100));
-            current_statement_begin__ = 24;
+            current_statement_begin__ = 22;
             lp_accum__.add(uniform_log<propto__>(omega, 0, 20));
         } catch (const std::exception& e) {
             stan::lang::rethrow_located(e, current_statement_begin__, prog_reader__());
@@ -296,7 +282,6 @@ public:
         names__.push_back("omega");
         names__.push_back("theta");
         names__.push_back("mu");
-        names__.push_back("V");
         names__.push_back("log_lik");
         names__.push_back("theta_new");
     }
@@ -309,8 +294,6 @@ public:
         dimss__.push_back(dims__);
         dims__.resize(0);
         dims__.push_back(K);
-        dimss__.push_back(dims__);
-        dims__.resize(0);
         dimss__.push_back(dims__);
         dims__.resize(0);
         dimss__.push_back(dims__);
@@ -361,57 +344,47 @@ public:
             (void) mu;  // dummy to suppress unused var warning
             stan::math::initialize(mu, DUMMY_VAR__);
             stan::math::fill(mu, DUMMY_VAR__);
-            current_statement_begin__ = 14;
-            double V;
-            (void) V;  // dummy to suppress unused var warning
-            stan::math::initialize(V, DUMMY_VAR__);
-            stan::math::fill(V, DUMMY_VAR__);
             // do transformed parameters statements
-            current_statement_begin__ = 15;
+            current_statement_begin__ = 14;
             stan::math::assign(mu, xi);
-            current_statement_begin__ = 16;
-            stan::math::assign(V, (omega * omega));
             if (!include_gqs__ && !include_tparams__) return;
             // validate transformed parameters
             const char* function__ = "validate transformed params";
             (void) function__;  // dummy to suppress unused var warning
-            current_statement_begin__ = 14;
-            check_greater_or_equal(function__, "V", V, 0);
             // write transformed parameters
             if (include_tparams__) {
                 vars__.push_back(mu);
-                vars__.push_back(V);
             }
             if (!include_gqs__) return;
             // declare and define generated quantities
-            current_statement_begin__ = 27;
+            current_statement_begin__ = 25;
             validate_non_negative_index("log_lik", "K", K);
             Eigen::Matrix<double, Eigen::Dynamic, 1> log_lik(K);
             stan::math::initialize(log_lik, DUMMY_VAR__);
             stan::math::fill(log_lik, DUMMY_VAR__);
-            current_statement_begin__ = 28;
+            current_statement_begin__ = 26;
             double theta_new;
             (void) theta_new;  // dummy to suppress unused var warning
             stan::math::initialize(theta_new, DUMMY_VAR__);
             stan::math::fill(theta_new, DUMMY_VAR__);
             // generated quantities statements
-            current_statement_begin__ = 29;
+            current_statement_begin__ = 27;
             for (int i = 1; i <= K; ++i) {
-                current_statement_begin__ = 29;
+                current_statement_begin__ = 27;
                 stan::model::assign(log_lik, 
                             stan::model::cons_list(stan::model::index_uni(i), stan::model::nil_index_list()), 
-                            normal_log(get_base1(yi, i, "yi", 1), get_base1(theta, i, "theta", 1), get_base1(si, i, "si", 1)), 
+                            normal_log(get_base1(y, i, "y", 1), get_base1(theta, i, "theta", 1), get_base1(se, i, "se", 1)), 
                             "assigning variable log_lik");
             }
-            current_statement_begin__ = 30;
+            current_statement_begin__ = 28;
             stan::math::assign(theta_new, normal_rng(xi, omega, base_rng__));
             // validate, write generated quantities
-            current_statement_begin__ = 27;
+            current_statement_begin__ = 25;
             size_t log_lik_j_1_max__ = K;
             for (size_t j_1__ = 0; j_1__ < log_lik_j_1_max__; ++j_1__) {
                 vars__.push_back(log_lik(j_1__));
             }
-            current_statement_begin__ = 28;
+            current_statement_begin__ = 26;
             vars__.push_back(theta_new);
         } catch (const std::exception& e) {
             stan::lang::rethrow_located(e, current_statement_begin__, prog_reader__());
@@ -460,9 +433,6 @@ public:
             param_name_stream__.str(std::string());
             param_name_stream__ << "mu";
             param_names__.push_back(param_name_stream__.str());
-            param_name_stream__.str(std::string());
-            param_name_stream__ << "V";
-            param_names__.push_back(param_name_stream__.str());
         }
         if (!include_gqs__) return;
         size_t log_lik_j_1_max__ = K;
@@ -495,9 +465,6 @@ public:
         if (include_tparams__) {
             param_name_stream__.str(std::string());
             param_name_stream__ << "mu";
-            param_names__.push_back(param_name_stream__.str());
-            param_name_stream__.str(std::string());
-            param_name_stream__ << "V";
             param_names__.push_back(param_name_stream__.str());
         }
         if (!include_gqs__) return;

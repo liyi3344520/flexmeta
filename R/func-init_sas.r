@@ -1,7 +1,7 @@
 #' An Object of initial values for the Sinh-arcsinh distribution
 #'
-#' @name sas_stan
-#' @rdname sas_stan
+#' @name init_sas
+#' @rdname init_sas
 #' @export
 init_sas <- function() {
   list(sigma = runif(1, 0, 2), delta = runif(1, 0, 2),

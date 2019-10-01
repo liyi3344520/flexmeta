@@ -26,3 +26,6 @@ Generate DIC
 \examples{
 require("flexmeta")
 }
+\seealso{
+stanmodels
+}
