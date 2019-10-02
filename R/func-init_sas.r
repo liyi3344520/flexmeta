@@ -2,6 +2,7 @@
 #'
 #' @name init_sas
 #' @rdname init_sas
+#' @importFrom stats runif
 #' @export
 init_sas <- function() {
   list(sigma = runif(1, 0, 2), delta = runif(1, 0, 2),

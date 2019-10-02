@@ -17,6 +17,7 @@
 #' @importFrom stats dnorm
 #' @importFrom rstan extract
 #' @examples
+#' \donttest{
 #' require("flexmeta")
 #' require("rstan")
 #' options(mc.cores = parallel::detectCores())
@@ -29,6 +30,7 @@
 #'   chains = 1, warmup = 5000, iter = 30000, seed = 2645751)
 #'
 #' dic(fit, dat)
+#' }
 #' @export
 dic <- function(fit, dat){
 

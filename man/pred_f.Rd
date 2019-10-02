@@ -17,6 +17,7 @@ predictive distribution of \eqn{\theta_{new}}.}
 Generate Summary of Predictive Distribution
 }
 \examples{
+\donttest{
 require("flexmeta")
 require("rstan")
 options(mc.cores = parallel::detectCores())
@@ -29,6 +30,7 @@ fit <- sampling(sm_sn, data = dat,
   chains = 1, warmup = 5000, iter = 30000, seed = 2645751)
 
 pred_f(fit)
+}
 }
 \seealso{
 \code{\link[rstan]{sampling}}, \code{\link[rstan]{stanmodel-class}},

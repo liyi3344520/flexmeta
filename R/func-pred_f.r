@@ -11,7 +11,9 @@
 #' @importFrom stats quantile sd density
 #' @importFrom e1071 skewness kurtosis
 #' @importFrom rstan extract
+#' @importFrom graphics hist lines
 #' @examples
+#' \donttest{
 #' require("flexmeta")
 #' require("rstan")
 #' options(mc.cores = parallel::detectCores())
@@ -24,6 +26,7 @@
 #'   chains = 1, warmup = 5000, iter = 30000, seed = 2645751)
 #'
 #' pred_f(fit)
+#' }
 #' @export
 pred_f <- function(fit, plot = TRUE){
 

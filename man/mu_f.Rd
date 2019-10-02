@@ -17,6 +17,7 @@ posterior distribution of \eqn{mu}.}
 Generate posterior distribution of \eqn{mu}
 }
 \examples{
+\donttest{
 require("flexmeta")
 require("rstan")
 options(mc.cores = parallel::detectCores())
@@ -29,6 +30,7 @@ fit <- sampling(sm_sn, data = dat,
   chains = 1, warmup = 5000, iter = 30000, seed = 2645751)
 
 mu_f(fit)
+}
 }
 \seealso{
 \code{\link[rstan]{sampling}}, \code{\link[rstan]{stanmodel-class}},
