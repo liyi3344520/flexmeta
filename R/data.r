@@ -27,7 +27,7 @@
 #' \emph{Psychol Med.}
 #' \strong{37}(8): 1075-1084.
 #' \url{https://doi.org/10.1017/S0033291707009877}
-#' 
+#'
 #' Higgins, J. P. T, Thompson, S. G., Spiegelhalter, D. J. (2009).
 #' A re-evaluation of random-effects meta-analysis.
 #' \emph{J R Stat Soc Ser A Stat Soc.}
@@ -62,8 +62,8 @@ NULL
 #' Treatment of fibromyalgia syndrome with antidepressants: a meta-analysis.
 #' \emph{JAMA.}
 #' \strong{301}(2): 198-209.
-#' \url{https://doi.org/10.1001/jama.2008.944}
-#' 
+#' \url{https://jamanetwork.com/journals/jama/fullarticle/183189}
+#'
 #' Riley, R. D., Higgins, J. P. T, and Deeks, J. J. (2011).
 #' Interpretation of random effects meta-analyses.
 #' \emph{BMJ.}
@@ -108,7 +108,7 @@ NULL
 #' diastolic blood pressure (DBP) in patients with hypertension.
 #' Negative estimates indicate the reduction of DBP in the
 #' anti-hypertensive treatment group.
-#' 
+#'
 #' \itemize{
 #'   \item \code{y}: Standardized mean difference
 #'   \item \code{se}: Standard error
