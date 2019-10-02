@@ -2,7 +2,7 @@
 # The 'flexmeta' package
 
 
-## Version 1.0.0 (2019-09-30)
+## Version 0.0.1 (2019-10-02)
 
 * First release.
 
