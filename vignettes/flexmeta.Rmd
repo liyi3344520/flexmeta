@@ -1,6 +1,6 @@
 ---
 title: "Introduction to the `flexmeta` package"
-author: "Hisashi Noma and Kengo Nagashima"
+author: "Hisashi Noma, Kengo Nagashima, Satoshi Teramukai, and Toshi A. Furukawa"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
