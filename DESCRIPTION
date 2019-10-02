@@ -6,9 +6,7 @@ Authors@R: c(
   person("Hisashi", "Noma", 
          role = c("aut"), comment = c(ORCID = "0000-0002-2520-9949")),
   person("Kengo", "Nagashima", email = "nshi1201@gmail.com",
-         role = c("aut", "cre"), comment = c(ORCID = "0000-0003-4529-9045")),
-  person("Satoshi", "Teramukai", role = c("aut")),
-  person("Toshi A.", "Furukawa", role = c("aut"))
+         role = c("aut", "cre"), comment = c(ORCID = "0000-0003-4529-9045"))
   )
 Description: An R package for implementing meta-analysis using flexible
   random-effects distribution models (e.g., skew t-distribution,

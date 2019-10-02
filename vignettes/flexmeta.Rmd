@@ -1,6 +1,6 @@
 ---
 title: "Introduction to the `flexmeta` package"
-author: "Hisashi Noma, Kengo Nagashima, Satoshi Teramukai, and Toshi A. Furukawa"
+author: "Hisashi Noma and Kengo Nagashima"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -43,6 +43,7 @@ data("clbp")
 dat <- convert_mean(clbp$n1, clbp$m1, clbp$s1, clbp$n2, clbp$m2, clbp$s2)
 dat <- list(K = length(dat$y), y = dat$y, se = dat$se)
 
+# skew-normal example
 fit <- sampling(sm_sn, data = dat,
   chains = 1, warmup = 5000, iter = 30000, seed = 2645751)
 pred_f(fit)
@@ -59,18 +60,25 @@ data("clbp")
 dat <- convert_mean(clbp$n1, clbp$m1, clbp$s1, clbp$n2, clbp$m2, clbp$s2)
 dat <- list(K = length(dat$y), y = dat$y, se = dat$se)
 
+# normal
 fit1 <- sampling(sm_norm, data = dat,
   chains = 1, warmup = 5000, iter = 30000, seed = 2645751)
+# student-t
 fit2 <- sampling(sm_t, data = dat,
   chains = 1, warmup = 5000, iter = 30000, seed = 2645751)
+# skew-normal
 fit3 <- sampling(sm_sn, data = dat,
   chains = 1, warmup = 5000, iter = 30000, seed = 2645751)
+# skew-t
 fit4 <- sampling(sm_st, data = dat,
   chains = 1, warmup = 5000, iter = 30000, seed = 2645751)
+# asymmetric Subboton (Type II)
 fit5 <- sampling(sm_as, data = dat,
   chains = 1, warmup = 5000, iter = 30000, seed = 2645751)
+# Jones-Faddy
 fit6 <- sampling(sm_jf, data = dat,
   chains = 1, warmup = 5000, iter = 30000, seed = 2645751)
+# Sinh-arcsinh
 fit7 <- sampling(sm_sas, data = dat, init = init_sas,
   chains = 1, warmup = 5000, iter = 30000, seed = 2645751)
 
@@ -82,6 +90,7 @@ e5 <- extract(fit5)
 e6 <- extract(fit6)
 e7 <- extract(fit7)
 
+# Plot Predictive Distributions
 par(mfrow = c(2, 4))
 hist(e1$theta_new, br = 150, xlim = c(-40, 30), ylim = c(0, .1),
   freq = FALSE, main = "(a) Normal distribution",
@@ -125,6 +134,7 @@ hist(e7$theta_new, br = 300, xlim = c(-40, 30), ylim = c(0, .1),
 ds <- density(e7$theta_new)
 lines(ds$x, ds$y, col = 4, lwd = 2)
 
+# DICs
 dic(fit1, dat)
 dic(fit2, dat)
 dic(fit3, dat)
