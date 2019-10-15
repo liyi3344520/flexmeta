@@ -65,7 +65,7 @@ NULL
 #' \url{https://jamanetwork.com/journals/jama/fullarticle/183189}
 #'
 #' Riley, R. D., Higgins, J. P. T, and Deeks, J. J. (2011).
-#' Interpretation of random effects meta-analyses.
+#' Interpretation of random-effects meta-analyses.
 #' \emph{BMJ.}
 #' \strong{342}: d549.
 #' \url{https://doi.org/10.1136/bmj.d549}
@@ -93,7 +93,7 @@ NULL
 #' @format A data frame with 10 rows and 2 variables
 #' @references
 #' Riley, R. D., Higgins, J. P. T, and Deeks, J. J. (2011).
-#' Interpretation of random effects meta-analyses.
+#' Interpretation of random-effects meta-analyses.
 #' \emph{BMJ.}
 #' \strong{342}: d549.
 #' \url{https://doi.org/10.1136/bmj.d549}

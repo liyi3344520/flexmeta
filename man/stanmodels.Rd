@@ -11,7 +11,7 @@
 \alias{sm_as}
 \alias{sm_jf}
 \alias{sm_sas}
-\title{Compiled \code{stanmodel} objects of flexible random effects distribution models}
+\title{Compiled \code{stanmodel} objects of flexible random-effects distribution models}
 \format{An object of class \code{stanmodel}.}
 \usage{
 sm_norm
@@ -29,7 +29,7 @@ sm_jf
 sm_sas
 }
 \description{
-Compiled \code{stanmodel} objects of flexible random effects distribution models
+Compiled \code{stanmodel} objects of flexible random-effects distribution models
 }
 \details{
 Compiled \code{stanmodel} objects of flexible random
@@ -39,10 +39,10 @@ effects distribution models that are defined as
 for \eqn{i=1,\ldots,K}, where \eqn{\theta_i} is the true effect
 size of the ith study, \eqn{\sigma_i^2} is within-studies
 variances that is usually assumed to be known and fixed to their
-valid estimates, and \eqn{F} corresponds to the random effects
+valid estimates, and \eqn{F} corresponds to the random-effects
 distribution that expresses the probability distribution how
 \eqn{\theta_i} is heterogeneity distributed.
-The \code{flexmeta} package supports seven random effects
+The \code{flexmeta} package supports seven random-effects
 distributions, \eqn{F}, as follows:
 \itemize{
 \item \code{sm_norm}: A \code{stanmodel} object for a normal random
@@ -50,7 +50,7 @@ distributions, \eqn{F}, as follows:
   where \eqn{\xi} is location (mean), and \eqn{\omega} is scale
   parameter (SD).
 \item \code{sm_t}: A \code{stanmodel} object for a non-central
-  student-\eqn{t} random effects distribution,
+  student-\eqn{t} random-effects distribution,
   \eqn{F \sim t(\nu, \mu, \omega)}, where \eqn{\xi} is location (mean),
   \eqn{\omega} is scale parameter (SD), and \eqn{\nu} is d.f.
 \item \code{sm_sn}: A \code{stanmodel} object for a skew normal random
@@ -62,17 +62,17 @@ distributions, \eqn{F}, as follows:
   where \eqn{\xi} is location (mean), \eqn{\omega} is scale parameter (SD),
   and \eqn{\alpha} is shape parameter.
 \item \code{sm_as}: A \code{stanmodel} object for an asymmetric Subboton
-  (Type II) random effects distribution,
+  (Type II) random-effects distribution,
   \eqn{F \sim AS2(\mu, \omega, \nu, \alpha)},
   where \eqn{\xi} is location (mean), \eqn{\omega} is scale parameter (SD),
   and \eqn{\alpha} is shape parameter.
 \item \code{sm_jf}: A \code{stanmodel} object for an Jones-Faddy
-  random effects distribution, \eqn{F \sim JF(\mu, \omega, a, b)},
+  random-effects distribution, \eqn{F \sim JF(\mu, \omega, a, b)},
   where \eqn{\xi} is location (mean), \eqn{\omega} is scale parameter (SD),
   and \eqn{a} and \eqn{b} are distribution parameters regulate
   the skewness and kurtosis.
 \item \code{sm_sas}: A \code{stanmodel} object for an Sinh-arcsinh
-  random effects distribution, \eqn{F \sim SAS(\mu, \omega, \delta, \epsilon)},
+  random-effects distribution, \eqn{F \sim SAS(\mu, \omega, \delta, \epsilon)},
   where \eqn{\xi} is location (mean), \eqn{\omega} is scale parameter (SD),
   \eqn{\delta} is kurtosis parameter and \eqn{\epsilon} is skewness parameter.
 }

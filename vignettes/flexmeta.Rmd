@@ -10,22 +10,22 @@ vignette: >
 ---
 
 
-The `flexmeta` package implements flexible random effects distribution models that are defined as
+The `flexmeta` package implements flexible random-effects distribution models that are defined as
 
 $$Y_i \sim N(\theta_i, \sigma_i^2)$$
 $$\theta_i \sim F$$
 
-for $i=1,\ldots,K$, where $\theta_i$ is the true effect size of the $i$-th study, $\sigma_i^2$ is within-studies variances that is usually assumed to be known and fixed to their valid estimates, and $F$ corresponds to the random effects distribution that expresses the probability distribution how $\theta_i$ is heterogeneity distributed.
+for $i=1,\ldots,K$, where $\theta_i$ is the true effect size of the $i$-th study, $\sigma_i^2$ is within-studies variances that is usually assumed to be known and fixed to their valid estimates, and $F$ corresponds to the random-effects distribution that expresses the probability distribution how $\theta_i$ is heterogeneity distributed.
 
-The `flexmeta` package supports seven compled `stanmodel` objects of random effects distributions, $F$, as follows:
+The `flexmeta` package supports seven compled `stanmodel` objects of random-effects distributions, $F$, as follows:
 
-* `sm_norm`: A `stanmodel` object for a normal random effects distribution, $F \sim N(\xi, \omega)$, where $\xi$ is location (mean), and $\omega$ is scale parameter (SD).
-* `sm_t`: A `stanmodel` object for a non-central student-$t$ random effects distribution, $F \sim t(\nu, \mu, \omega)$, where $\xi$ is location (mean), $\omega$ is scale parameter (SD), and $\nu$ is d.f.
-* `sm_sn`: A `stanmodel` object for a skew normal random effects distribution, $F \sim skew-N(\xi, \omega, \alpha)$, where $\xi$ is location (mean), $\omega$ is scale parameter (SD), and $\alpha$ is shape parameter.
-* `sm_t`: A `stanmodel` object for a skew $t$ random effects distribution, $F \sim skew-t(\mu, \omega, \nu, \alpha)$, where $\xi$ is location (mean), $\omega$ is scale parameter (SD), and $\alpha$ is shape parameter.
-* `sm_as`: A `stanmodel` object for an asymmetric Subboton (Type II) random effects distribution, $F \sim AS2(\mu, \omega, \nu, \alpha)$, where $\xi$ is location (mean), $\omega$ is scale parameter (SD), and $\alpha$ is shape parameter.
-* `sm_jf`: A `stanmodel` object for an Jones-Faddy random effects distribution, $F \sim JF(\mu, \omega, a, b)$, where $\xi$ is location (mean), $\omega$ is scale parameter (SD), and $a$ and $b$ are distribution parameters regulate the skewness and kurtosis.
-* `sm_sas`: A `stanmodel` object for an Sinh-arcsinh random effects distribution, $F \sim SAS(\mu, \omega, \delta, \epsilon)$, where $\xi$ is location (mean), $\omega$ is scale parameter (SD), $\delta$ is kurtosis parameter and $\epsilon$ is skewness parameter.
+* `sm_norm`: A `stanmodel` object for a normal random-effects distribution, $F \sim N(\xi, \omega)$, where $\xi$ is location (mean), and $\omega$ is scale parameter (SD).
+* `sm_t`: A `stanmodel` object for a non-central student-$t$ random-effects distribution, $F \sim t(\nu, \mu, \omega)$, where $\xi$ is location (mean), $\omega$ is scale parameter (SD), and $\nu$ is d.f.
+* `sm_sn`: A `stanmodel` object for a skew normal random-effects distribution, $F \sim skew-N(\xi, \omega, \alpha)$, where $\xi$ is location (mean), $\omega$ is scale parameter (SD), and $\alpha$ is shape parameter.
+* `sm_t`: A `stanmodel` object for a skew $t$ random-effects distribution, $F \sim skew-t(\mu, \omega, \nu, \alpha)$, where $\xi$ is location (mean), $\omega$ is scale parameter (SD), and $\alpha$ is shape parameter.
+* `sm_as`: A `stanmodel` object for an asymmetric Subboton (Type II) random-effects distribution, $F \sim AS2(\mu, \omega, \nu, \alpha)$, where $\xi$ is location (mean), $\omega$ is scale parameter (SD), and $\alpha$ is shape parameter.
+* `sm_jf`: A `stanmodel` object for an Jones-Faddy random-effects distribution, $F \sim JF(\mu, \omega, a, b)$, where $\xi$ is location (mean), $\omega$ is scale parameter (SD), and $a$ and $b$ are distribution parameters regulate the skewness and kurtosis.
+* `sm_sas`: A `stanmodel` object for an Sinh-arcsinh random-effects distribution, $F \sim SAS(\mu, \omega, \delta, \epsilon)$, where $\xi$ is location (mean), $\omega$ is scale parameter (SD), $\delta$ is kurtosis parameter and $\epsilon$ is skewness parameter.
 
 The `data` should be a list of study data:
 
